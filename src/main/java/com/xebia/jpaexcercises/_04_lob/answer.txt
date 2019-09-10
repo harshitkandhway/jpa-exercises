@@ -1,0 +1,16 @@
+
+    We can convert the image in byte[]  before storing it in database.
+    try {
+            File file = new File("C:/dev/image/mario.jpg");
+            byte[] picInBytes = new byte[(int) file.length()];
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(picInBytes);
+            fileInputStream.close();
+            employee.setPicture(picInBytes);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+     After running the DbApp the object gets persisted in database with a column named pic and the image gets
+     stored in BLOB.

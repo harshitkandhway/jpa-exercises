@@ -1,0 +1,19 @@
+1)      @Table(name = "employees")
+
+By adding the annotation @Table(name = "employees") to any entity like 'Employee' in the example below
+we are making sure that the table name for the table created by hibernate in database is changed from
+the default value of the ower case of java class name that is "employee" to the given name in the name argument
+of @Table annotation that is "employees".
+
+
+
+
+2)      @Column(name = "full_name")
+        private String name;
+
+By adding the annotation @Column(name = "full_name") to any field like 'name' in the example below
+we are making sure that the column name for the table created by hibernate in database is
+changed from the default value of the field that is "name" to the given name in the name argument
+of @Column annotation that is "full_name".
+
+

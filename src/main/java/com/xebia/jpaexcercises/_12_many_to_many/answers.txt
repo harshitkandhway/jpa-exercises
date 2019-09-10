@@ -1,0 +1,2 @@
+1) 5 tables are created
+    `employees`, `employees_projects`, `hibernate_sequence`, `projects`, `projects_employees`

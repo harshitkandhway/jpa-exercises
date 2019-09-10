@@ -1,0 +1,39 @@
+We need to execute the query below so that the database tables can have larger size of columns.
+create database jpaex character set utf8;
+
+Q1) How many tables are created? What is the table structure?
+
+Three tables are created :
+
+employees
+mysql> describe employees;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | bigint(20)   | NO   | PRI | NULL    |       |
+| name  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+
+hibernate_sequence
+mysql> describe hibernate_sequence;
++----------+------------+------+-----+---------+-------+
+| Field    | Type       | Null | Key | Default | Extra |
++----------+------------+------+-----+---------+-------+
+| next_val | bigint(20) | YES  |     | NULL    |       |
++----------+------------+------+-----+---------+-------+
+
+phonetype_to_phone_number
+mysql> describe phonetype_to_phone_number;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| emp_id       | bigint(20)   | NO   | PRI | NULL    |       |
+| phone_number | varchar(255) | YES  |     | NULL    |       |
+| phone_type   | varchar(255) | NO   | PRI | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+__________________________________________________________________________________________________________________
+Q2) How can you ensure that table created for map has name `phone_numbers` instead of `Employee_phoneNumbers`?
+
+We have used annotation.
+__________________________________________________________________________________________________________________
+Q3) How can you ensure that primary key of `phone_numbers` table has name `emp_id`?

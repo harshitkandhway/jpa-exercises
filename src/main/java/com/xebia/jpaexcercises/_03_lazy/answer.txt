@@ -1,0 +1,18 @@
+Solution
+
+When fetching an entity, all attributes are going to be loaded as well. This is because every entity
+attribute is implicitly marked with the @Basic annotation whose default fetch policy is FetchType.EAGER.
+However, the attribute fetch strategy can be set to FetchType.LAZY, in which case the entity attribute
+is loaded with a secondary select statement upon being accessed for the first time.
+
+@Basic(fetch = FetchType.LAZY)
+This configuration alone is not sufficient because Hibernate requires bytecode instrumentation to
+intercept the attribute access request and issue the secondary select statement on demand.
+
+Observation
+In fetch type as LAZY if the field value is required ,hibernate runs the query as :
+
+select employee0_.id as id1_0_0_, employee0_.long_bio as long_bio2_0_0_, employee0_.full_name
+as full_nam3_0_0_ from employees employee0_ where employee0_.id=?
+
+Which is same as the query run when Fetch.Type="Eager"

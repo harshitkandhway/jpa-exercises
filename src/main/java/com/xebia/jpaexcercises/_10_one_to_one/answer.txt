@@ -1,0 +1,7 @@
+1) By adding argument cascade=CascadeType.PERSIST to @OneToOne mapping defined.
+
+2) 3 tables are getting created , employees table has the foreign key
+
+3) By using @JoinColumn(name="plot_id") we can rename the foreign key
+
+4) Add a field of employee with @OneToOne mapping mappedBy="parkingSpace"

@@ -1,0 +1,47 @@
+Solutions
+
+1) There are three tables being created in database
+    i)employees
+    ii)departments
+    iii) hibernate_sequence
+
+    If you use strategy="AUTO", Hibernate will generate a table called hibernate_sequence to provide
+    the next number for the ID sequence. You may have forgotten to add the AutoIncrement feature to
+    your table's PK.
+    You may use generation strategy strategy="IDENTITY" to enforce using the AutoIncrement feature
+    available in MySql and avoid creating a table.
+
+2)Structure of Employees table is as follows
+    FIELD           TYPE            NULL    KEY     DEFAULT     EXTRA
+    id	            bigint(20)	    NO	    PRI		null
+    name	        varchar(255)	YES			    null
+    salary	        bigint(20)	    NO			    null
+    department_id	bigint(20)	    YES	    MUL		null
+
+3)Structure of Departments table is as follows
+      FIELD           TYPE              NULL    KEY     DEFAULT     EXTRA
+      id	          bigint(20)	    NO	    PRI		null
+      name	          varchar(255)	    YES			    null
+
+Q4. What is the sequence of insert statements? Did Hibernate first inserted to employees and then to departments? Explain why?
+    Solution
+    First to employee then to department
+--> CascadeType PERSIST propagates the persist operation from a parent to a child entity
+Since,  @ManyToOne(cascade = CascadeType.PERSIST)
+        private Department department;
+Primary entity is Employee and secondary entity is Department.
+
+5. Did hibernate created mapping table?
+No there were no mapping tables created
+
+6. What will happen if we remove `CascadeType.PERSIST` attribute in `department` field of `Employee` class? Why it happens?
+iT will give error
+
+7. @NOT_NULL is to be used in the department field in employee
+
+8.
+
+9. Which of the two entities is the owning side and which of the two is the inverse side?
+Employee is the owning side and department in the inverse side.
+
+
